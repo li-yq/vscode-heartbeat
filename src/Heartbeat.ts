@@ -1,3 +1,4 @@
+import { ensureFile, utimes } from "fs-extra";
 import { Disposable, StatusBarItem, window } from "vscode";
 
 export class Heartbeat implements Disposable {
@@ -11,8 +12,13 @@ export class Heartbeat implements Disposable {
         this.status = HeartbeatIcon.Status.Inactive;
     }
 
-    private beat(): void {
+    private async beat(): Promise<void> {
         console.log(new Date().toISOString(), "Heartbeat");
+
+        const HEARTBEAT_FILE = "/tmp/vscode-heartbeat";
+        const now = new Date();
+        await ensureFile(HEARTBEAT_FILE);
+        await utimes(HEARTBEAT_FILE, now, now);
     }
 
     start(): void {
