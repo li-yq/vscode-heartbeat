@@ -12,9 +12,7 @@ export function activate(context: vscode.ExtensionContext) {
 	console.log('Congratulations, your extension "heartbeat" is now active!');
 
 	// create the heartbeat instance
-	const heartbeat = new Heartbeat(3000, () => {
-		console.log(new Date().toISOString(), "Heartbeat");
-	});
+	const heartbeat = new Heartbeat();
 	context.subscriptions.push(heartbeat);
 
 	// listen on window state change
