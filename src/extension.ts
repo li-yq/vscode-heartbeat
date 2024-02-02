@@ -10,7 +10,17 @@ export function activate(context: vscode.ExtensionContext) {
 	// This line of code will only be executed once when your extension is activated
 	console.log('Congratulations, your extension "heartbeat" is now active!');
 
+	// listen on window state change
+	context.subscriptions.push(
+		vscode.window.onDidChangeWindowState((e) => {
+			console.log(
+				new Date().toISOString(),
+				"Window state changed:",
+				JSON.stringify(e));
+		})
+	);
+
 }
 
 // This method is called when your extension is deactivated
-export function deactivate() {}
+export function deactivate() { }
