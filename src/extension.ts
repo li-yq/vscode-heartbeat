@@ -22,10 +22,9 @@ export function activate(context: vscode.ExtensionContext) {
 				new Date().toISOString(),
 				"Window state changed:",
 				JSON.stringify(e));
-			if (e.active && !heartbeat.running) {
+			if (e.active) {
 				heartbeat.start();
-			}
-			if (!e.active && heartbeat.running) {
+			} else {
 				heartbeat.stop();
 			}
 		})

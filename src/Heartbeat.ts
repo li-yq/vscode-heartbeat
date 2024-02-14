@@ -22,17 +22,25 @@ export class Heartbeat implements Disposable {
     }
 
     start(): void {
+        if (this.status === HeartbeatIcon.Status.Active) {
+            return;
+        }
+        this.status = HeartbeatIcon.Status.Active;
         this.clock.start();
         this.icon.setStatus(HeartbeatIcon.Status.Active);
     }
 
     stop(): void {
+        if (this.status === HeartbeatIcon.Status.Inactive) {
+            return;
+        }
+        this.status = HeartbeatIcon.Status.Inactive;
         this.clock.stop();
         this.icon.setStatus(HeartbeatIcon.Status.Inactive);
     }
 
-    get running(): boolean {
-        return this.clock.running;
+    get isActive(): boolean {
+        return this.status === HeartbeatIcon.Status.Active;
     }
 
     dispose(): void {
@@ -66,10 +74,6 @@ class HeartbeatClock implements Disposable {
 
     dispose(): void {
         this.stop();
-    }
-
-    get running(): boolean {
-        return !!this.timer;
     }
 
 }
