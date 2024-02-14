@@ -11,6 +11,9 @@ export class HeartbeatManager implements Disposable {
         this.heartbeat = new Heartbeat();
         this.disposables.push(this.heartbeat);
         window.onDidChangeWindowState(this.windowStateListener, this, this.disposables);
+        if (window.state.focused) {
+            this.heartbeat.start();
+        }
     }
 
     private windowStateListener(e: WindowState) {
