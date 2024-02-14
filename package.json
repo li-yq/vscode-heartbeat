@@ -1,7 +1,9 @@
 {
   "name": "heartbeat",
   "displayName": "Heartbeat",
-  "description": "",
+  "description": "Touch an heartbeat file when VS Code is active.",
+  "publisher": "li-yq",
+  "repository": "https://github.com/li-yq/vscode-heartbeat",
   "version": "0.0.1",
   "engines": {
     "vscode": "^1.85.0"
