@@ -87,18 +87,16 @@ class HeartbeatIcon implements Disposable {
         this.status = status;
         switch (status) {
             case HeartbeatIcon.Status.Active:
-                this.item.text = "$(heart) Active";
+                this.item.text = "$(pulse)";
                 this.item.tooltip = "Heartbeat is active";
                 this.item.show();
                 break;
             case HeartbeatIcon.Status.Inactive:
-                this.item.text = "$(heart) Inactive";
+                this.item.text = "$(heart)";
                 this.item.tooltip = "Heartbeat is inactive";
                 this.item.show();
                 break;
             case HeartbeatIcon.Status.Disabled:
-                this.item.text = "$(heart) Disabled";
-                this.item.tooltip = "Heartbeat is disabled";
                 this.item.hide();
                 break;
         }
