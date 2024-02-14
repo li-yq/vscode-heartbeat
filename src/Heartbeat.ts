@@ -80,15 +80,13 @@ class HeartbeatClock implements Disposable {
 
 class HeartbeatIcon implements Disposable {
     private item: StatusBarItem;
-    private status: HeartbeatIcon.Status;
 
     constructor() {
         this.item = window.createStatusBarItem("heartbeat");
-        this.status = HeartbeatIcon.Status.Inactive;
+        this.setStatus(HeartbeatIcon.Status.Inactive);
     }
 
     setStatus(status: HeartbeatIcon.Status): void {
-        this.status = status;
         switch (status) {
             case HeartbeatIcon.Status.Active:
                 this.item.text = "$(pulse)";
